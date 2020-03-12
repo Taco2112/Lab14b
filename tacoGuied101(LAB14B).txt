@@ -1,0 +1,14 @@
+Handbook for the recently derezzed
+AKA a simpler way of telling me what to do in the lab
+its not weird its just a proccess. Lets begin.
+
+I have to...
+
+rewrite the existing Choo-Choo Train with proper Object Oriented Programming Features.
+
+by
+    -requiring all methods connected with the train program are contained in a Train class
+    or that they are contained in a class that has its object as attribute in the Train class
+
+    THATS IT LIKE THINGS DO IT !!!!!!OR ELSE
+    CHEESEBURGERRRRRRRRRRRRRRRRRRRRRR! (simba growl)
