@@ -1,3 +1,7 @@
+import java.awt.*;
+import java.applet.*;
+import java.util.ArrayList;
+
 public class Train
 {
     ArrayList<RailCar> newCars;
