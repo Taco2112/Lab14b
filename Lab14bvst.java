@@ -1,30 +1,72 @@
-// Lab14bvst.java
-// This is one of the student starting files
-// of the Lab14b lab assignment.
-// This file tests all the classes together.
-// and draws a train without proper OOP design.
-
-
-import java.awt.*;
-import java.applet.*;
-import java.util.ArrayList;
-
-
-public class Lab14bvst extends Applet
+public class Train
 {
-	public void paint(Graphics g)
-	{
-      ArrayList<RailCar> railCars = new ArrayList<RailCar>();
-      railCars.add(new Locomotive(Color.blue,100,300));
-      railCars.add(new PassengerCar(Color.gray,275,300));
-      railCars.add(new PassengerCar(Color.gray,450,300));
-      railCars.add(new PassengerCar(Color.gray,625,300));
-      railCars.add(new FreightCar(Color.green,800,300));
-      railCars.add(new FreightCar(Color.green,975,300));      
-      railCars.add(new Caboose(Color.red,1150,300));
-      
-      for (RailCar railCar : railCars)
-         railCar.drawCar(g);
-	}
+    ArrayList<RailCar> newCars;
+    ArrayList<String> carNames;
+    ArrayList<Color> colors;
+    int StartX;
+    int StartY;
+    
+    public Train(int x, int y)
+    {
+        //Creates ArrayList to identify cars in the order they are intended to be in 
+        carNames = new ArrayList<String>();
+        //Creates primary train
+        newCars = new ArrayList<RailCar>();
+        //Creates ArrayList to identify car colors in the order they are intended to be in
+        colors = new ArrayList<Color>();
+        StartX=x;
+        StartY=y;
+    }
+    
+    public void addCar(String str, Color color)
+    {
+        //Adds cars' names and color to ArrayList
+        carNames.add(str);
+        colors.add(color);        
+    }
+    
+    public void addCar(int place, String str, Color color)
+    {
+        //Adds cars' names and color to ArrayList in intended order
+        carNames.add(place,str);
+        colors.add(place,color);        
+    }
+    
+    //Makes train with cars in intended order
+    public void dupTrain(ArrayList<String> array)
+    {
+        int k=0;
+        for(String names:array)
+        {
+            if(names.equals("Locomotive"))
+            {
+                newCars.add(new Locomotive(colors.get(k), StartX, StartY));
+            }
+            else if(names.equals("PassengerCar"))
+            {
+                newCars.add(new PassengerCar(colors.get(k), StartX, StartY));
+            }
+            else if(names.equals("FreightCar"))
+            {
+                newCars.add(new FreightCar(colors.get(k), StartX, StartY));
+            }
+            else if(names.equals("Caboose"))
+            {
+                newCars.add(new Caboose(colors.get(k), StartX, StartY));
+            }
+            k++;
+            StartX+=175;
+        }
+    }
+    
+    //Draws train
+    public void showCars(Graphics g)
+    {
+        dupTrain(carNames);
+        for(RailCar car:newCars)
+        {
+            car.drawCar(g);
+        }
+    }
 }
 	
